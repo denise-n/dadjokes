@@ -19,13 +19,18 @@ class JokeList extends Component {
         for (let i = 0; i < this.props.numJokes; i++) {
             let response =  await axios.get('https://icanhazdadjoke.com/', 
                 {headers: {Accept: 'application/json'}})
-            jokes.push({joke: response.data.joke, id:response.data.id})
+            jokes.push({text: response.data.joke, id: response.data.id, votes: 0})
         }
         this.setState({jokes: jokes})
     }
 
+    handleVote = (id, change) => {
+        this.setState(prevState => ({
+            jokes: prevState.jokes.map(j => j.id === id ? {...j, votes: (j.votes + change)} : j )
+        }))
+    }
+
     render() {
-        console.log(this.state)
         return (
             <div className="JokeList">
                 <div className="JokeList-sidebar">
@@ -35,7 +40,17 @@ class JokeList extends Component {
                 </div>
                 
                 <div className="JokeList-jokes">
-                    {this.state.jokes.map(j => <h3>{j.joke}</h3>)}
+                    {this.state.jokes.map(
+                        j => 
+                            <Joke 
+                                key={j.id}
+                                id={j.id}
+                                text={j.text} 
+                                votes={j.votes}
+                                handleVote={this.handleVote}
+                            />
+                            )
+                        }
                 </div>
 
             </div>
