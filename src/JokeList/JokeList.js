@@ -15,8 +15,9 @@ class JokeList extends Component {
     }
 
     async componentDidMount () {
+        const { numJokes } = this.props
         let jokes = []
-        for (let i = 0; i < this.props.numJokes; i++) {
+        for (let i = 0; i < numJokes; i++) {
             let response =  await axios.get('https://icanhazdadjoke.com/', 
                 {headers: {Accept: 'application/json'}})
             jokes.push({text: response.data.joke, id: response.data.id, votes: 0})
@@ -36,9 +37,8 @@ class JokeList extends Component {
                 <div className="JokeList-sidebar">
                     <h1 className="JokeList-title"><span>Dad</span> Jokes</h1>
                     <img src="https://assets.dryicons.com/uploads/icon/svg/8927/0eb14c71-38f2-433a-bfc8-23d9c99b3647.svg" alt=""/>
-                    <button className="JokeList-getmore">New Jokes</button>
+                    {/* <button className="JokeList-getmore">New Jokes</button> */}
                 </div>
-                
                 <div className="JokeList-jokes">
                     {this.state.jokes.map(
                         j => 
