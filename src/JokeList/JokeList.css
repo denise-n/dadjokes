@@ -51,13 +51,22 @@
      border: none;
      outline: none;
      word-spacing: 1.2rem;
-     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+	 box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+	 cursor: pointer;
 }
 
-button:disabled { 
+.JokeList-getmore:hover {
+	transform: translateY(-3px);
+}
+
+
+
+.JokeList-getmore:disabled { 
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  
 
 .JokeList-jokes {
     height: 90%;
@@ -68,6 +77,8 @@ button:disabled {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
     z-index: 2;
 }
+
+/* LOADING STYLES */
 
 .loading {
     display: flex;
@@ -218,3 +229,4 @@ button:disabled {
 		transform: translate(15px);
 	}
 }
+
