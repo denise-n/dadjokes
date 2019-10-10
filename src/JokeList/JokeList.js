@@ -13,6 +13,7 @@ class JokeList extends Component {
             jokes: JSON.parse(window.localStorage.getItem('jokes')) || [],
             loading: false
         }
+        this.seenJokes = new Set()
     }
 
     componentDidMount () {
@@ -26,11 +27,20 @@ class JokeList extends Component {
     getJokes = async () => {
         const { numJokes } = this.props
         let jokes = []
-        for (let i = 0; i < numJokes; i++) {
+        while (jokes.length < numJokes) {
             let response =  await axios.get('https://icanhazdadjoke.com/', 
                 {headers: {Accept: 'application/json'}})
-            jokes.push({text: response.data.joke, id: response.data.id, votes: 0})
+            let newJokeId = response.data.id
+            if (!this.seenJokes.has(newJokeId)) {
+                this.seenJokes.add(newJokeId)
+                jokes.push({text: response.data.joke, id: newJokeId, votes: 0})
+            } else {
+                console.log('duplicate joke')
+            }
         }
+
+        // getting no duplicate jokes works assuming there are no duplicates in original 10 jokes
+
         this.setState(prevState => ({jokes: [...prevState.jokes, ...jokes], loading: false}),
         () => window.localStorage.setItem('jokes', JSON.stringify(this.state.jokes))
         )
@@ -45,6 +55,7 @@ class JokeList extends Component {
     }
 
     render() {
+        this.state.jokes.map(j => this.seenJokes.add(j.id))
         return (
             <div className="JokeList">
                 <div className="JokeList-sidebar">
