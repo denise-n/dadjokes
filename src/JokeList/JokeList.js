@@ -5,7 +5,7 @@ import axios from 'axios'
 
 class JokeList extends Component {
     static defaultProps = {
-        numJokes: 10
+        numJokes: 4
     }
     constructor(props) {
         super(props)
@@ -39,7 +39,7 @@ class JokeList extends Component {
             }
         }
 
-        // getting no duplicate jokes works assuming there are no duplicates in original 10 jokes
+        // getting no duplicate jokes works assuming there are no duplicates in original jokes
 
         this.setState(prevState => ({jokes: [...prevState.jokes, ...jokes], loading: false}),
         () => window.localStorage.setItem('jokes', JSON.stringify(this.state.jokes))
@@ -56,6 +56,20 @@ class JokeList extends Component {
 
     render() {
         this.state.jokes.map(j => this.seenJokes.add(j.id))
+        const loading = (
+            <div className="loading">
+                            <div className="container">
+                                <div className="ball"></div>
+                                <div className="ball"></div>
+                                <div className="ball"></div>
+                                <div className="ball"></div>
+                                <div className="ball"></div>
+                                <div className="ball"></div>
+                                <div className="ball"></div>
+                            </div>
+                            <h1>Loading</h1>
+                        </div>
+        )
         return (
             <div className="JokeList">
                 <div className="JokeList-sidebar">
@@ -70,18 +84,7 @@ class JokeList extends Component {
                 </div>
                 <div className="JokeList-jokes">
                     {this.state.loading 
-                        ? <div className="loading">
-                            <div className="container">
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                            </div>
-                            <h1>Loading</h1>
-                        </div>
+                        ? loading
                         : this.state.jokes.sort((a,b) => b.votes - a.votes).map(
                             j => 
                                 <Joke 
@@ -92,11 +95,8 @@ class JokeList extends Component {
                                     handleVote={this.handleVote}
                                 />
                                 )
-                            }
-                        
-                    
+                            } 
                 </div>
-
             </div>
         )
     }
