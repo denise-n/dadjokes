@@ -77,6 +77,73 @@
     z-index: 2;
 }
 
+@media (max-width: 1024px) {
+	.JokeList {
+		flex-direction: column;
+		width: 100%;
+		height: 83%;
+		align-self: flex-start;
+		margin-top: 3%;
+	}
+	.JokeList-sidebar {
+		flex-wrap: wrap;
+		width: 100%;
+		height: 35%;
+	}
+	.JokeList-sidebar h1 {
+		width: 60%;
+		font-size: 7rem;
+	}
+	.JokeList-sidebar img {
+		margin-left: 2%;
+		width: 30%;
+		order: -1;
+	}
+	.JokeList-getmore {
+		width: 37%;
+		height: 23%;
+		align-self: flex-start;
+		margin-left: 5%;
+	}
+	.JokeList-jokes {
+		width: 100%;
+		height: 65%;
+		padding-right: 2%;
+		padding-left: 2%;
+	}
+}
+
+@media (max-width: 770px) {
+	.JokeList {
+		width: 100%;
+		height: 95%;
+	}
+	.JokeList-sidebar h1 {
+		font-size: 5rem;
+	}
+}
+
+@media (max-width: 420px) {
+	.JokeList {
+		width: 100%;
+		height: 95%;
+	}
+	.JokeList-sidebar img {
+		width: 35%;
+		height: 100%;
+	}
+	.JokeList-sidebar h1 {
+		font-size: 3.5rem;
+    	margin: 0;
+	}
+	.JokeList-getmore {
+		font-size: 1em;
+		height: 20%;
+		padding: 1px;
+		margin-left: 12%;
+	}
+}
+
 /* LOADING STYLES */
 
 .loading {

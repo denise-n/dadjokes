@@ -5,7 +5,7 @@ import axios from 'axios'
 
 class JokeList extends Component {
     static defaultProps = {
-        numJokes: 4
+        numJokes: 6
     }
     constructor(props) {
         super(props)
@@ -58,17 +58,17 @@ class JokeList extends Component {
         this.state.jokes.map(j => this.seenJokes.add(j.id))
         const loading = (
             <div className="loading">
-                            <div className="container">
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                                <div className="ball"></div>
-                            </div>
-                            <h1>Loading</h1>
-                        </div>
+                <div className="container">
+                    <div className="ball"></div>
+                    <div className="ball"></div>
+                    <div className="ball"></div>
+                    <div className="ball"></div>
+                    <div className="ball"></div>
+                    <div className="ball"></div>
+                    <div className="ball"></div>
+                </div>
+                <h1>Loading</h1>
+            </div>
         )
         return (
             <div className="JokeList">

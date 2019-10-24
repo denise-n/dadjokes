@@ -50,6 +50,13 @@
     animation-duration: 1s;
 }
 
+@media (max-width: 420px) {
+    .Joke-btns span {
+        border: none !important;
+        box-shadow: none;
+    }
+}
+
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);
