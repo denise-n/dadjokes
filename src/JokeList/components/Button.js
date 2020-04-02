@@ -30,9 +30,9 @@ const Wrapper = styled.button`
     }
 `
 
-export function Button({children, onClick}) {
+export function Button({children, onClick, disabled}) {
     return (
-        <Wrapper onClick={onClick}>
+        <Wrapper onClick={onClick} disabled={disabled}>
             {children}
         </Wrapper>
     )

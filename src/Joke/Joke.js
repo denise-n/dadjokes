@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 `
 
 class Joke extends Component {
-    getColour = () => {
+    getBorderColour = () => {
         const {votes} = this.props
         if (votes >= 15) {
             return '#4CAF50'
@@ -55,7 +55,7 @@ class Joke extends Component {
     render() {
         const { handleVote, id, votes, text } = this.props
         const styles = {
-            border: `2px solid ${this.getColour()}`
+            border: `2px solid ${this.getBorderColour()}`
         }
         return (
             <Wrapper>
