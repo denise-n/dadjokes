@@ -1,20 +1,20 @@
-.Joke {
+/* .Joke {
     display: flex;
     border-bottom: 2px solid #eeeeee;
     align-items: center;
     justify-content: center;
     font-weight: 400;
     padding: 1rem;
-}
+} */
 
-.Joke-btns {
+/* .Joke-btns {
     display: flex;
     margin-right: 1rem;
     align-items: center;
     justify-content: center;
     width: 15%;
-}
-
+} */
+/* 
 .Joke-btns span {
     margin: 5px;
     width: 50px;
@@ -26,8 +26,8 @@
     font-size: 1.5rem;
     box-shadow: 0 10px 38px rgba(0, 0, 0, 0.2), 0 10px 12px rgba(0, 0, 0, 0.1);
 
-}
-
+} */
+/* 
 .Joke-text {
     width: 75%;
     font-size: 1.2rem;
@@ -36,19 +36,19 @@
 .arrow {
     font-size: 1.5rem;
     cursor: pointer;
-}
+} */
 
-.Joke-emoji {
+/* .Joke-emoji {
     font-size: 2.5rem;
     margin-left: auto;
     border-radius: 50%;
     box-shadow: 0 10px 38px rgba(0, 0, 0, 0.2), 0 10px 12px rgba(0, 0, 0, 0.1);
-}
+} */
 
-.Joke-emoji:hover {
+/* .Joke-emoji:hover {
     animation-name: spin;
     animation-duration: 1s;
-}
+} */
 
 @media (max-width: 420px) {
     .Joke-btns span {
@@ -57,7 +57,7 @@
     }
 }
 
-@keyframes spin {
+/* @keyframes spin {
 	0% {
 		transform: rotate(0deg);
 	}
@@ -73,5 +73,5 @@
 	100% {
 		transform: rotate(0deg);
 	}
-}
+} */
 

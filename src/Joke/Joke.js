@@ -1,5 +1,17 @@
 import React, { Component } from 'react'
-import './Joke.css'
+import styled from 'styled-components'
+import { RatingButton, Arrow, JokeText, Emoji } from './components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import './Joke.css'
+
+const Wrapper = styled.div`
+    display: flex;
+    border-bottom: 2px solid #eeeeee;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    padding: 1rem;
+`
 
 class Joke extends Component {
     getColour = () => {
@@ -46,23 +58,23 @@ class Joke extends Component {
             border: `2px solid ${this.getColour()}`
         }
         return (
-            <div className="Joke">
-                <div className="Joke-btns">
-                    <div className="arrow" onClick={() => handleVote(id, 1)}>
-                        <i className="fas fa-arrow-up" />   
-                    </div>
+            <Wrapper>
+                <RatingButton>
+                    <Arrow onClick={() => handleVote(id, 1)}>
+                        <FontAwesomeIcon icon="arrow-up" />   
+                    </Arrow>
                     <span style={styles}>{votes}</span>
-                    <div className="arrow" onClick={() => handleVote(id, -1)}>
-                        <i className="fas fa-arrow-down" />
-                    </div>
-                </div>
-                <div className="Joke-text">
-                    <h3>{text}</h3>
-                </div>
-                <div className="Joke-emoji">
-                <i className={this.getEmoji()}></i>
-                </div>
-            </div>
+                    <Arrow onClick={() => handleVote(id, -1)}>
+                        <FontAwesomeIcon icon="arrow-down" />
+                    </Arrow>
+                </RatingButton>
+
+                <JokeText>{text}</JokeText>
+                
+                <Emoji>
+                    <i className={this.getEmoji()}></i>
+                </Emoji>
+            </Wrapper>
         )
     }
 }

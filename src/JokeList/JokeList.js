@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import './JokeList.css'
 import Joke from '../Joke/Joke'
+import  { LoadingIcon, SideBar, Title, Button, List } from './components/'
 import axios from 'axios'
+
+const Wrapper = styled.div`
+    display: flex;
+    width: 80%;
+    height: 80%;
+
+`
 
 class JokeList extends Component {
     static defaultProps = {
@@ -22,6 +31,7 @@ class JokeList extends Component {
 
     handleClick = () => {
         this.setState({loading: true}, this.getJokes)
+        console.log('clicked')
     }
 
     getJokes = async () => {
@@ -56,35 +66,21 @@ class JokeList extends Component {
 
     render() {
         this.state.jokes.map(j => this.seenJokes.add(j.id))
-        const loading = (
-            <div className="loading">
-                <div className="container">
-                    <div className="ball"></div>
-                    <div className="ball"></div>
-                    <div className="ball"></div>
-                    <div className="ball"></div>
-                    <div className="ball"></div>
-                    <div className="ball"></div>
-                    <div className="ball"></div>
-                </div>
-                <h1>Loading</h1>
-            </div>
-        )
+        
         return (
-            <div className="JokeList">
-                <div className="JokeList-sidebar">
-                    <h1 className="JokeList-title"><span>Dad</span> Jokes</h1>
+            <Wrapper>
+                <SideBar>
+                    <Title><span>Dad</span> Jokes</Title>
                     <img src="https://assets.dryicons.com/uploads/icon/svg/8927/0eb14c71-38f2-433a-bfc8-23d9c99b3647.svg" alt=""/>
-                    <button 
+                    <Button 
                         onClick={this.handleClick}
-                        className="JokeList-getmore"
                         disabled={this.state.loading}
                     >New Jokes
-                    </button>
-                </div>
-                <div className="JokeList-jokes">
+                    </Button>
+                </SideBar>
+                <List>
                     {this.state.loading 
-                        ? loading
+                        ? <LoadingIcon />
                         : this.state.jokes.sort((a,b) => b.votes - a.votes).map(
                             j => 
                                 <Joke 
@@ -96,8 +92,8 @@ class JokeList extends Component {
                                 />
                                 )
                             } 
-                </div>
-            </div>
+                </List>
+            </Wrapper>
         )
     }
 }
